@@ -11,6 +11,7 @@
 		D37776F522EA9602003594B0 /* SeeDiariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37776F422EA9602003594B0 /* SeeDiariesViewController.swift */; };
 		D37776F722EA96D5003594B0 /* CreateDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37776F622EA96D5003594B0 /* CreateDiaryViewController.swift */; };
 		D37776F922EA971D003594B0 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37776F822EA971D003594B0 /* DiaryTableViewCell.swift */; };
+		D37776FB22EAA68D003594B0 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37776FA22EAA68D003594B0 /* Private.swift */; };
 		D3AD27E322E9AD070068EF55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD27E222E9AD070068EF55 /* AppDelegate.swift */; };
 		D3AD27E822E9AD070068EF55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3AD27E622E9AD070068EF55 /* Main.storyboard */; };
 		D3AD27EA22E9AD080068EF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3AD27E922E9AD080068EF55 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		D37776F422EA9602003594B0 /* SeeDiariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDiariesViewController.swift; sourceTree = "<group>"; };
 		D37776F622EA96D5003594B0 /* CreateDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewController.swift; sourceTree = "<group>"; };
 		D37776F822EA971D003594B0 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
+		D37776FA22EAA68D003594B0 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		D3AD27DF22E9AD070068EF55 /* DiaryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3AD27E222E9AD070068EF55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3AD27E722E9AD070068EF55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				D37776F622EA96D5003594B0 /* CreateDiaryViewController.swift */,
 				D37776F822EA971D003594B0 /* DiaryTableViewCell.swift */,
 				D37776F422EA9602003594B0 /* SeeDiariesViewController.swift */,
+				D37776FA22EAA68D003594B0 /* Private.swift */,
 				D3AD27E922E9AD080068EF55 /* Assets.xcassets */,
 				D3100C8922E9B67C0075546F /* Entity */,
 				D3AD27EB22E9AD080068EF55 /* LaunchScreen.storyboard */,
@@ -278,6 +281,7 @@
 				D37776F522EA9602003594B0 /* SeeDiariesViewController.swift in Sources */,
 				D37776F722EA96D5003594B0 /* CreateDiaryViewController.swift in Sources */,
 				D3100C8B22E9B67C0075546F /* Diary.swift in Sources */,
+				D37776FB22EAA68D003594B0 /* Private.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

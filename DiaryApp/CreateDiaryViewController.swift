@@ -34,7 +34,7 @@ class CreateDiaryViewController: UIViewController {
     }
     
     func loadDiaries() {
-        let url = URL(string: "http:localhost:8080/diary/load")!
+        let url = URL(string: Private.baseUrlString + "diary/load")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -50,7 +50,7 @@ class CreateDiaryViewController: UIViewController {
             return
         }
         let diary = Diary(title: titleTextField.text!, content: contentTextView.text!, posterName: nameTextField.text!, createdAt: Date())
-        let url = URL(string: "http:localhost:8080/diary/create")!
+        let url = URL(string: Private.baseUrlString + "diary/create")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("/application/json", forHTTPHeaderField: "Content-Type")
@@ -65,12 +65,11 @@ class CreateDiaryViewController: UIViewController {
                         self.titleTextField.text = ""
                         self.contentTextView.text = ""
                     }))
-                    self.present(alert, animated: true, completion: nil)
                 } else {
                     alert = UIAlertController(title: "エラー", message: "日記の投稿に失敗しました。", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "リトライ", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
                 }
+                self.present(alert, animated: true, completion: nil)
             }
         }.resume()
     }
