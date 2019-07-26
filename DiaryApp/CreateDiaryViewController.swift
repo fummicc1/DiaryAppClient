@@ -47,6 +47,7 @@ class CreateDiaryViewController: UIViewController {
     
     @IBAction func postDiary() {
         if nameTextField.text!.isEmpty || titleTextField.text!.isEmpty || contentTextView.text.isEmpty {
+            return
         }
         let diary = Diary(title: titleTextField.text!, content: contentTextView.text!, posterName: nameTextField.text!, createdAt: Date())
         let url = URL(string: "http:localhost:8080/diary/create")!
