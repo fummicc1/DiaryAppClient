@@ -32,7 +32,7 @@ class SeeDiariesViewController: UIViewController {
     
     func deleteAction(diaryID: String, completion: @escaping () -> ()) {
         DiaryManager.shared.deleteAction(diaryID: diaryID) { error in
-            if let error = error, error == .alreadyRequestDeleteAction {
+            if let error = error, error == .alreadyRequestDeletionAction {
                 let alert = UIAlertController(title: "削除申請済み", message: "1つのアカウントで同じ投稿に削除要請を複数回出すことはできません。。。", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)

@@ -43,7 +43,7 @@ class DiaryManager {
     
     func deleteAction(diaryID: String, completion: @escaping (DatabaseError?) -> ()) {
         if demandDeletionDiaryIDList.contains(diaryID) {
-            completion(.alreadyRequestDeleteAction)
+            completion(.alreadyRequestDeletionAction)
             return
         }
         guard let url = URL(string: Private.baseUrlString + "diary/delete/\(diaryID)") else { return }
@@ -60,5 +60,5 @@ class DiaryManager {
 }
 
 enum DatabaseError: Error {
-    case alreadyRequestDeleteAction
+    case alreadyRequestDeletionAction
 }
