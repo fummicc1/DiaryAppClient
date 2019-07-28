@@ -5,12 +5,12 @@ class SeeDiariesViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    var diaries: [Diary] = [] {
-        didSet {
-            if let tableView = tableView {
-                tableView.reloadData()
-            }
-        }
+    var saveData = UserDefaults.standard
+    var diaries: [Diary] {
+        return DiaryManager.shared.diaries
+    }
+    var demandDeletionDiaryIDList: [String] {
+        return DiaryManager.shared.demandDeletionDiaryIDList
     }
     
     override func viewDidLoad() {
@@ -21,15 +21,34 @@ class SeeDiariesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        DiaryManager.shared.loadDiaries {
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func back() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func deleteAction(diaryID: String, completion: @escaping () -> ()) {
+        DiaryManager.shared.deleteAction(diaryID: diaryID) { error in
+            if let error = error, error == .alreadyRequestDeleteAction {
+                let alert = UIAlertController(title: "削除申請済み", message: "1つのアカウントで同じ投稿に削除要請を複数回出すことはできません。。。", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else if error == nil {
+                self.saveData.set(self.demandDeletionDiaryIDList, forKey: "demandDeletionDiaryIDList")
+                let alert = UIAlertController(title: "削除申請", message: "削除申請を送りました。", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    completion()
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
 }
 
-extension SeeDiariesViewController: UITableViewDataSource {
+extension SeeDiariesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return diaries.count
     }
@@ -38,5 +57,14 @@ extension SeeDiariesViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryCell") as! DiaryTableViewCell
         cell.setup(diary: diaries[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteAction(diaryID: diaries[indexPath.row].id, completion: {
+                DiaryManager.shared.diaries.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            })
+        }
     }
 }

@@ -7,7 +7,7 @@ class CreateDiaryViewController: UIViewController {
     @IBOutlet var contentTextView: UITextView!
     @IBOutlet var implyWriteDiaryView: UILabel!
     
-    var diaries: [Diary] = []
+    let saveData = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,59 +23,28 @@ class CreateDiaryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadDiaries()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSeeDiary" {
-            let destination = segue.destination as! SeeDiariesViewController
-            destination.diaries = sender as! [Diary]
-        }
-    }
-    
-    func loadDiaries() {
-        let url = URL(string: Private.baseUrlString + "diary/load")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data, let diaries = try? JSONDecoder().decode([Diary].self, from: data) else {
-                return
-            }
-            self.diaries = diaries
-        }.resume()
+        nameTextField.text = saveData.string(forKey: "myName")
     }
     
     @IBAction func postDiary() {
         if nameTextField.text!.isEmpty || titleTextField.text!.isEmpty || contentTextView.text.isEmpty {
             return
         }
-        let diary = Diary(title: titleTextField.text!, content: contentTextView.text!, posterName: nameTextField.text!, createdAt: Date())
-        let url = URL(string: Private.baseUrlString + "diary/create")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("/application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(diary)
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                let alert: UIAlertController
-                if error == nil {
-                    alert = UIAlertController(title: "DONE", message: "日記の投稿が完了しました。", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        self.nameTextField.text = ""
-                        self.titleTextField.text = ""
-                        self.contentTextView.text = ""
-                    }))
-                } else {
-                    alert = UIAlertController(title: "エラー", message: "日記の投稿に失敗しました。", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "リトライ", style: .default, handler: nil))
-                }
-                self.present(alert, animated: true, completion: nil)
-            }
-        }.resume()
+        let diary = Diary(id: "", title: titleTextField.text!, content: contentTextView.text, posterName: nameTextField.text!, demandDeletionCount: 0, createdAt: nil)
+        DiaryManager.shared.create(diary: diary) {
+            self.saveData.set(diary.posterName, forKey: "myName")
+            let alert = UIAlertController(title: "DONE", message: "日記の投稿が完了しました。", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                self.nameTextField.text = ""
+                self.titleTextField.text = ""
+                self.contentTextView.text = ""
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func seeDiaries() {
-        performSegue(withIdentifier: "toSeeDiary", sender: diaries)
+        performSegue(withIdentifier: "toSeeDiary", sender: nil)
     }
 }
 
