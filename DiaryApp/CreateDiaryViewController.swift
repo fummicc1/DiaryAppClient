@@ -6,6 +6,7 @@ class CreateDiaryViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var contentTextView: UITextView!
     @IBOutlet var implyWriteDiaryView: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
     
     let saveData = UserDefaults.standard
     
@@ -14,16 +15,17 @@ class CreateDiaryViewController: UIViewController {
         titleTextField.delegate = self
         nameTextField.delegate = self
         contentTextView.delegate = self
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameTextField.text = saveData.string(forKey: "myName")
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func postDiary() {
