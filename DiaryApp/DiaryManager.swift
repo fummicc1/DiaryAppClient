@@ -8,7 +8,7 @@ class DiaryManager {
         return UserDefaults.standard.value(forKey: "demandDeletionDiaryIDList") as? [String] ?? []
     }
     
-    func loadDiaries(completion: @escaping () -> ()) {
+    static func loadDiaries(demandDeletionDiaryIDList: [String], completion: @escaping ([Diary]) -> ()) {
         let url = URL(string: Private.baseUrlString + "diary/load")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -17,18 +17,19 @@ class DiaryManager {
                 return
             }
             for diary in diaries {
-                if diary.demandDeletionCount > 10 || self.demandDeletionDiaryIDList.contains(diary.id) {
+                if
+                    diary.demandDeletionCount > 10 ||
+                    demandDeletionDiaryIDList.contains(diary.id) {
                     diaries.removeAll(where: {$0.id == diary.id})
                 }
             }
-            self.diaries = diaries
             DispatchQueue.main.async {
-                completion()
+                completion(diaries)
             }
             }.resume()
     }
     
-    func create(diary: Diary, completion: @escaping () -> ()) {
+    static func create(diary: Diary, completion: @escaping () -> ()) {
         let url = URL(string: Private.baseUrlString + "diary/create")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -41,8 +42,8 @@ class DiaryManager {
             }.resume()
     }
     
-    func deleteAction(diaryID: String, completion: @escaping (DatabaseError?) -> ()) {
-        if demandDeletionDiaryIDList.contains(diaryID) {
+    static func deleteAction(currentDemandDeletionDiaryIDList: [String], diaryID: String, completion: @escaping (DatabaseError?) -> ()) {
+        if currentDemandDeletionDiaryIDList.contains(diaryID) {
             completion(.alreadyRequestDeletionAction)
             return
         }
@@ -50,7 +51,7 @@ class DiaryManager {
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            UserDefaults.standard.set(self.demandDeletionDiaryIDList + [diaryID], forKey: "demandDeletionDiaryIDList")
+            UserDefaults.standard.set(currentDemandDeletionDiaryIDList + [diaryID], forKey: "demandDeletionDiaryIDList")
             DispatchQueue.main.async {
                 completion(nil)
             }

@@ -6,7 +6,6 @@ class CreateDiaryViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var contentTextView: UITextView!
     @IBOutlet var implyWriteDiaryView: UILabel!
-    @IBOutlet var scrollView: UIScrollView!
     
     let saveData = UserDefaults.standard
     
@@ -32,8 +31,8 @@ class CreateDiaryViewController: UIViewController {
         if nameTextField.text!.isEmpty || titleTextField.text!.isEmpty || contentTextView.text.isEmpty {
             return
         }
-        let diary = Diary(id: "", title: titleTextField.text!, content: contentTextView.text, posterName: nameTextField.text!, demandDeletionCount: 0, createdAt: "")
-        DiaryManager.shared.create(diary: diary) {
+        let diary = Diary(id: "", title: titleTextField.text!, content: contentTextView.text, posterName: nameTextField.text!, demandDeletionCount: 0, likedCount: 0, createdAt: "")
+        DiaryManager.create(diary: diary) {
             self.saveData.set(diary.posterName, forKey: "myName")
             let alert = UIAlertController(title: "DONE", message: "日記の投稿が完了しました。", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in

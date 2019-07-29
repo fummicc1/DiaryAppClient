@@ -6,6 +6,7 @@ struct Diary: Codable {
     let content: String
     let posterName: String
     let demandDeletionCount: Int
+    var likedCount: Int?
     let createdAt: String
     
     enum CodingKeys: String, CodingKey {
@@ -14,6 +15,7 @@ struct Diary: Codable {
         case content
         case posterName = "poster_name"
         case demandDeletionCount = "demend_deletion_count"
+        case likedCount = "liked_count"
         case createdAt = "created_at"
     }
 }
