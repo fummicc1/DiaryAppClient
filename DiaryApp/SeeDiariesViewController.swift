@@ -72,5 +72,6 @@ extension SeeDiariesViewController: UITableViewDataSource, UITableViewDelegate {
         }))
         actionSheet.addAction(UIAlertAction(title: "戻る", style: .default, handler: nil))
         present(actionSheet, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

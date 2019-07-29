@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,40 +14,43 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CreateDiaryViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKc-9d-sw3">
-                                <rect key="frame" x="64" y="76.000000000000014" width="247" height="148.33333333333337"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKc-9d-sw3">
+                                <rect key="frame" x="64" y="52" width="192" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="BKE-o9-GlE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前を入力" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mqj-4T-83f">
-                                <rect key="frame" x="32" y="240.33333333333334" width="311" height="30.000000000000028"/>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前を入力" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mqj-4T-83f">
+                                <rect key="frame" x="32" y="164" width="256" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="wd8-Gw-sfZ"/>
+                                    <constraint firstAttribute="height" constant="35" id="wd8-Gw-sfZ"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-J8-Rq1">
-                                <rect key="frame" x="32" y="364.33333333333326" width="311" height="324.66666666666674"/>
+                                <rect key="frame" x="32" y="298" width="256" height="162"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="今日のタイトルを入力" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C7M-9a-F43">
-                                <rect key="frame" x="32" y="302.33333333333331" width="311" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="今日のタイトルを入力" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="C7M-9a-F43">
+                                <rect key="frame" x="32" y="231" width="256" height="35"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="247" verticalCompressionResistancePriority="1000" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="e6h-yw-pfb">
-                                <rect key="frame" x="64" y="721" width="247" height="41"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="e6h-yw-pfb">
+                                <rect key="frame" x="32" y="492" width="256" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZP-Zf-iT2">
-                                        <rect key="frame" x="0.0" y="0.0" width="107.66666666666667" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="112" height="60"/>
                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <state key="normal" title="日記">
@@ -59,7 +61,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-A7-kQC">
-                                        <rect key="frame" x="139.66666666666666" y="0.0" width="107.33333333333334" height="41"/>
+                                        <rect key="frame" x="144" y="0.0" width="112" height="60"/>
                                         <color key="backgroundColor" red="0.98431372549999996" green="0.95306998239999996" blue="0.68373129399999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                         <state key="normal" title="投稿">
@@ -71,15 +73,13 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="jSs-gg-HEr"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="Sbo-5t-sUN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="qj1-FH-o0I"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タップして日記を書き始めよう！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ga-rW-3ce">
-                                <rect key="frame" x="32" y="364.33333333333331" width="311" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5AM-So-Ydc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タップして日記を書き始めよう！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ga-rW-3ce">
+                                <rect key="frame" x="32" y="298" width="256" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -88,11 +88,10 @@
                         <constraints>
                             <constraint firstItem="C7M-9a-F43" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="2W1-ye-L4s"/>
                             <constraint firstItem="wS5-J8-Rq1" firstAttribute="top" secondItem="C7M-9a-F43" secondAttribute="bottom" constant="32" id="6Xq-jP-Anh"/>
-                            <constraint firstItem="e6h-yw-pfb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="7fA-rZ-F66"/>
+                            <constraint firstItem="e6h-yw-pfb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="7fA-rZ-F66"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mqj-4T-83f" secondAttribute="trailing" constant="32" id="9OR-oh-Lc6"/>
                             <constraint firstItem="6Ga-rW-3ce" firstAttribute="top" secondItem="wS5-J8-Rq1" secondAttribute="top" id="DwE-nx-t8t"/>
                             <constraint firstItem="zKc-9d-sw3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="ECd-4Q-RcU"/>
-                            <constraint firstItem="wS5-J8-Rq1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="M6K-yr-lrk"/>
                             <constraint firstItem="Mqj-4T-83f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="Oqs-QV-Kyb"/>
                             <constraint firstItem="Mqj-4T-83f" firstAttribute="height" secondItem="C7M-9a-F43" secondAttribute="height" id="QA1-wQ-J2d"/>
                             <constraint firstItem="wS5-J8-Rq1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="VVn-vK-bCA"/>
@@ -101,10 +100,10 @@
                             <constraint firstItem="e6h-yw-pfb" firstAttribute="top" secondItem="wS5-J8-Rq1" secondAttribute="bottom" constant="32" id="gWY-jL-cX4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C7M-9a-F43" secondAttribute="trailing" constant="32" id="hhg-rc-OPG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zKc-9d-sw3" secondAttribute="trailing" constant="64" id="iJT-Qt-ard"/>
-                            <constraint firstItem="Mqj-4T-83f" firstAttribute="top" secondItem="zKc-9d-sw3" secondAttribute="bottom" constant="16" id="nqZ-2I-pwu"/>
+                            <constraint firstItem="Mqj-4T-83f" firstAttribute="top" secondItem="zKc-9d-sw3" secondAttribute="bottom" constant="64" id="nqZ-2I-pwu"/>
                             <constraint firstItem="6Ga-rW-3ce" firstAttribute="trailing" secondItem="wS5-J8-Rq1" secondAttribute="trailing" id="nw3-H3-jJz"/>
                             <constraint firstItem="zKc-9d-sw3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="okR-8R-YEG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e6h-yw-pfb" secondAttribute="trailing" constant="64" id="p5s-T8-ZU0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e6h-yw-pfb" secondAttribute="trailing" constant="32" id="p5s-T8-ZU0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wS5-J8-Rq1" secondAttribute="trailing" constant="32" id="qtL-Ai-BQF"/>
                             <constraint firstItem="6Ga-rW-3ce" firstAttribute="leading" secondItem="wS5-J8-Rq1" secondAttribute="leading" id="s3Y-nl-S29"/>
                         </constraints>
@@ -120,47 +119,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+            <point key="canvasLocation" x="136.80000000000001" y="129.31034482758622"/>
         </scene>
         <!--See Diaries View Controller-->
         <scene sceneID="IVO-Pq-HpZ">
             <objects>
                 <viewController id="fHZ-fN-iEb" customClass="SeeDiariesViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PB8-WV-BKx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0yx-PF-AuU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiaryCell" rowHeight="206" id="aEu-vj-JaS" customClass="DiaryTableViewCell" customModule="DiaryApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="206"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="206"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aEu-vj-JaS" id="FXj-6e-Ckw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="205.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="205.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlu-PY-yUw">
-                                                    <rect key="frame" x="15" y="11" width="329" height="38.333333333333336"/>
+                                                    <rect key="frame" x="15" y="11" width="368" height="38.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGB-hN-Dq4">
-                                                    <rect key="frame" x="15" y="65.333333333333343" width="345" height="77.333333333333343"/>
+                                                    <rect key="frame" x="15" y="65.5" width="384" height="77"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCv-JW-AZE">
-                                                    <rect key="frame" x="15" y="158.66666666666666" width="164.66666666666666" height="20.333333333333343"/>
+                                                    <rect key="frame" x="15" y="158.5" width="184" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfo-Yz-HN0">
-                                                    <rect key="frame" x="195.66666666666663" y="158.66666666666666" width="164.33333333333337" height="20.333333333333343"/>
+                                                    <rect key="frame" x="215" y="158.5" width="184" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -193,7 +192,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-Ei-qBZ">
-                                <rect key="frame" x="16" y="722" width="40" height="40"/>
+                                <rect key="frame" x="16" y="512" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="DfY-XK-b48"/>
                                     <constraint firstAttribute="height" constant="40" id="ITY-KK-Kal"/>
